@@ -1,0 +1,106 @@
+<main class="container py-5">
+
+  <!-- Hero Section -->
+  <section class="row align-items-center mb-5" aria-label="Hero Banner">
+    <div class="col-md-6 order-md-1 text-center text-md-start">
+      <h1 class="display-4 fw-bold">Delicious Food, Delivered Fast</h1>
+      <p class="lead">Craving something tasty? Get top restaurant meals delivered to your door in no time.</p>
+      <a (click)="orderNow()" class="btn btn-danger btn-lg">Order Now</a>
+    </div>
+    <div class="col-md-6 order-md-2">
+      <img 
+        src="https://plus.unsplash.com/premium_photo-1682130100826-913b21060e4e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0" 
+        alt="Assorted food delivery on a table" 
+        class="img-fluid rounded"
+      />
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section class="text-center mb-5" aria-label="Key Features">
+    <h2 class="mb-4">Why Choose Us?</h2>
+    <div class="row justify-content-center">
+      <div class="col-md-4 mb-4">
+        <img src="https://cdn-icons-png.flaticon.com/128/5637/5637217.png" alt="Delivery truck icon" class="mb-3" width="64">
+        <h3 class="text-danger">Fast Delivery</h3>
+        <p>Lightning-fast delivery from your favorite spots.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="https://cdn-icons-png.flaticon.com/128/561/561611.png" alt="Variety of food icon" class="mb-3" width="64">
+        <h3 class="text-danger">Wide Variety</h3>
+        <p>Explore a diverse range of cuisines and dishes.</p>
+      </div>
+      <div class="col-md-4 mb-4">
+        <img src="https://cdn-icons-png.flaticon.com/128/7827/7827955.png" alt="Secure payment icon" class="mb-3" width="64">
+        <h3 class="text-danger">Secure Payment</h3>
+        <p>Enjoy seamless and safe transactions at checkout.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Popular Categories -->
+  <section aria-label="Popular Food Categories" class="mb-5">
+    <h2 class="text-center mb-4">Popular Categories</h2>
+    <div class="row g-4">
+      <div class="col-sm-6 col-md-3" >
+        <div class="card text-center h-100 shadow-sm" (click)="categoryNavigate('Continental')">
+          <img 
+            src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0" 
+            class="card-img-top" 
+            alt="Cheesy pepperoni pizza"
+            style="height: 140px; object-fit: cover;"
+          >
+          <div class="card-body bg-light">
+            <h5 class="card-title mb-0">Continental</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="card text-center h-100 shadow-sm" (click)="categoryNavigate('Chinese')">
+          <img 
+            src="https://images.pexels.com/photos/2664216/pexels-photo-2664216.jpeg" 
+            class="card-img-top" 
+            alt="Classic burger"
+            style="height: 140px; object-fit: cover;"
+          >
+          <div class="card-body bg-light">
+            <h5 class="card-title mb-0">Chinese</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="card text-center h-100 shadow-sm" (click)="categoryNavigate('Indian')">
+          <img 
+          src="https://images.unsplash.com/photo-1542367592-8849eb950fd8?q=80&w=1331&auto=format&fit=crop&ixlib=rb-4.1.0" 
+          class="card-img-top" 
+          alt="Traditional Indian curry dish"
+          style="height: 140px; object-fit: cover;"
+          >
+          <div class="card-body bg-light">
+            <h5 class="card-title mb-0">Indian</h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-6 col-md-3">
+        <div class="card text-center h-100 shadow-sm" (click)="categoryNavigate('Dessert')">
+          <img 
+            src="https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=1050&auto=format&fit=crop&ixlib=rb-4.1.0" 
+            class="card-img-top" 
+            alt="Chocolate dessert with fruit topping"
+            style="height: 140px; object-fit: cover;"
+          >
+          <div class="card-body bg-light">
+            <h5 class="card-title mb-0">Dessert</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="text-center bg-light py-5 rounded" aria-label="Call to Action" *ngIf="!userRole">
+    <h2 class="mb-4">Hungry? Let’s fix that.</h2>
+    <button class="btn btn-danger btn-lg" (click)="orderNow()">Login to Order</button>
+  </section>
+
+</main>

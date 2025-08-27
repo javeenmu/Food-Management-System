@@ -1,0 +1,90 @@
+
+.card {
+    border-radius: 0.5rem;
+  }
+  
+  canvas {
+    max-height: 400px;
+    width: 100% !important;
+  }
+ 
+.dashboard-container {
+
+    min-height: 100vh;
+    background-color: #f8f9fc;
+    transition: background-color 0.3s ease;
+  }
+  
+  .dashboard-header {
+    border-bottom: 1px solid #dee2e6;
+  }
+  
+  .status-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 1rem;
+  }
+  
+  .status-icon i {
+    color: #6c757d;
+  }
+  
+  .food-card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    transition: transform 0.2s ease;
+  }
+  
+  .food-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .btn-toggle-mode {
+    font-size: 0.9rem;
+  }
+  
+  .dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+  }
+  
+  .dark-mode .status-card,
+  .dark-mode .food-card {
+    background-color: #1e1e1e;
+    color: #f1f1f1;
+  }
+  
+  .dark-mode .dashboard-header {
+    border-color: #333;
+  }
+  
+  .dark-mode .btn-toggle-mode {
+    border-color: #f1f1f1;
+    color: #f1f1f1;
+  }
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  }
+  
+  .dark-mode .modal-content {
+    background-color: #2c2c2c;
+    color: #f1f1f1;
+  }

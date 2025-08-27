@@ -1,0 +1,57 @@
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mc.e.s.SpringappApplication[0;39m: Starting SpringappApplication using Java 17.0.15 with PID 27940 (/home/coder/project/workspace/springapp/target/classes started by coder in /home/coder/project/workspace/springapp)
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mc.e.s.SpringappApplication[0;39m: No active profile set, falling back to 1 default profile: "default"
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m: Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m: Finished Spring Data repository scanning in 12 ms. Found 4 JPA repository interfaces.
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.b.w.e.t.TomcatWebServer[0;39m: Tomcat initialized with port 8080 (http)
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.a.c.c.StandardService[0;39m: Starting service [Tomcat]
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.a.c.c.StandardEngine[0;39m: Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.a.c.c.C.[.[.[/][0;39m: Initializing Spring embedded WebApplicationContext
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.b.w.s.c.ServletWebServerApplicationContext[0;39m: Root WebApplicationContext: initialization completed in 328 ms
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.h.j.i.u.LogHelper[0;39m: HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.h.c.i.RegionFactoryInitiator[0;39m: HHH000026: Second-level cache disabled
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.o.j.p.SpringPersistenceUnitInfo[0;39m: No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mc.z.h.HikariDataSource[0;39m: HikariPool-2 - Starting...
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mc.z.h.p.HikariPool[0;39m: HikariPool-2 - Added connection com.mysql.cj.jdbc.ConnectionImpl@211a3a90
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mc.z.h.HikariDataSource[0;39m: HikariPool-2 - Start completed.
+2025-07-26 11:05 [31mWARN [0;39m [35m[restartedMain][0;39m [36mo.h.o.deprecation[0;39m: HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-26 11:05 [31mWARN [0;39m [35m[restartedMain][0;39m [36mo.h.o.deprecation[0;39m: HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.h.e.t.j.p.i.JtaPlatformInitiator[0;39m: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m: Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-26 11:05 [31mWARN [0;39m [35m[restartedMain][0;39m [36mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer[0;39m: Global AuthenticationManager configured with UserDetailsService bean with name myUserDetailsService
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.b.d.a.OptionalLiveReloadServer[0;39m: LiveReload server is running on port 35729
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.b.w.e.t.TomcatWebServer[0;39m: Tomcat started on port 8080 (http) with context path '/'
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mc.e.s.SpringappApplication[0;39m: Started SpringappApplication in 1.95 seconds (process running for 61.849)
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.b.d.a.ConditionEvaluationDeltaLoggingListener[0;39m: Condition evaluation unchanged
+2025-07-26 11:05 [34mINFO [0;39m [35m[File Watcher][0;39m [36mo.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener[0;39m: Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2025-07-26 11:05 [34mINFO [0;39m [35m[Thread-7][0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m: Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-26 11:05 [34mINFO [0;39m [35m[Thread-7][0;39m [36mc.z.h.HikariDataSource[0;39m: HikariPool-2 - Shutdown initiated...
+2025-07-26 11:05 [34mINFO [0;39m [35m[Thread-7][0;39m [36mc.z.h.HikariDataSource[0;39m: HikariPool-2 - Shutdown completed.
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mc.e.s.SpringappApplication[0;39m: Starting SpringappApplication using Java 17.0.15 with PID 27940 (/home/coder/project/workspace/springapp/target/classes started by coder in /home/coder/project/workspace/springapp)
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mc.e.s.SpringappApplication[0;39m: No active profile set, falling back to 1 default profile: "default"
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m: Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.d.r.c.RepositoryConfigurationDelegate[0;39m: Finished Spring Data repository scanning in 12 ms. Found 4 JPA repository interfaces.
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.b.w.e.t.TomcatWebServer[0;39m: Tomcat initialized with port 8080 (http)
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.a.c.c.StandardService[0;39m: Starting service [Tomcat]
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.a.c.c.StandardEngine[0;39m: Starting Servlet engine: [Apache Tomcat/10.1.33]
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.a.c.c.C.[.[.[/][0;39m: Initializing Spring embedded WebApplicationContext
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.b.w.s.c.ServletWebServerApplicationContext[0;39m: Root WebApplicationContext: initialization completed in 277 ms
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.h.j.i.u.LogHelper[0;39m: HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.h.c.i.RegionFactoryInitiator[0;39m: HHH000026: Second-level cache disabled
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.o.j.p.SpringPersistenceUnitInfo[0;39m: No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mc.z.h.HikariDataSource[0;39m: HikariPool-3 - Starting...
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mc.z.h.p.HikariPool[0;39m: HikariPool-3 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7ea24cc8
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mc.z.h.HikariDataSource[0;39m: HikariPool-3 - Start completed.
+2025-07-26 11:05 [31mWARN [0;39m [35m[restartedMain][0;39m [36mo.h.o.deprecation[0;39m: HHH90000025: MySQL8Dialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-07-26 11:05 [31mWARN [0;39m [35m[restartedMain][0;39m [36mo.h.o.deprecation[0;39m: HHH90000026: MySQL8Dialect has been deprecated; use org.hibernate.dialect.MySQLDialect instead
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.h.e.t.j.p.i.JtaPlatformInitiator[0;39m: HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m: Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-07-26 11:05 [31mWARN [0;39m [35m[restartedMain][0;39m [36mo.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration[0;39m: spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer[0;39m: Global AuthenticationManager configured with UserDetailsService bean with name myUserDetailsService
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.b.d.a.OptionalLiveReloadServer[0;39m: LiveReload server is running on port 35729
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.b.w.e.t.TomcatWebServer[0;39m: Tomcat started on port 8080 (http) with context path '/'
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mc.e.s.SpringappApplication[0;39m: Started SpringappApplication in 1.677 seconds (process running for 65.993)
+2025-07-26 11:05 [34mINFO [0;39m [35m[restartedMain][0;39m [36mo.s.b.d.a.ConditionEvaluationDeltaLoggingListener[0;39m: Condition evaluation unchanged
+2025-07-26 11:05 [34mINFO [0;39m [35m[SpringApplicationShutdownHook][0;39m [36mo.s.o.j.LocalContainerEntityManagerFactoryBean[0;39m: Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-07-26 11:05 [34mINFO [0;39m [35m[SpringApplicationShutdownHook][0;39m [36mc.z.h.HikariDataSource[0;39m: HikariPool-3 - Shutdown initiated...
+2025-07-26 11:05 [34mINFO [0;39m [35m[SpringApplicationShutdownHook][0;39m [36mc.z.h.HikariDataSource[0;39m: HikariPool-3 - Shutdown completed.

@@ -1,0 +1,30 @@
+.bg-blur {
+    filter: blur(8px);
+    transform: scale(1.05); /* Prevents edges from showing due to blur */
+    z-index: 1;
+  }
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    backdrop-filter: blur(8px); /* Blur effect */
+    background-color: rgba(0, 0, 0, 0.4); /* Optional dark overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050; /* Make sure it's above other content */
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  

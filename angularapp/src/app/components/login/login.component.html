@@ -1,0 +1,107 @@
+<!-- Background Wrapper -->
+<div class="position-relative min-vh-100 w-100 overflow-hidden">
+
+  <!-- Background Image -->
+  <div class="position-absolute top-0 start-0 w-100 h-100 bg-blur"
+       style="background: url('https://images.pexels.com/photos/33033816/pexels-photo-33033816.jpeg') center / cover no-repeat; z-index: 1;">
+  </div>
+
+  <!-- Dark Overlay -->
+  <div class="position-absolute top-0 start-0 w-100 h-100"
+       style="background-color: rgba(0, 0, 0, 0.1); z-index: 2;">
+  </div>
+
+  <!-- Login Card Container -->
+  <div class="position-relative z-3 d-flex align-items-center justify-content-center min-vh-100">
+
+    <div class="card shadow-lg rounded-4 border-0 w-100" style="max-width: 900px; min-height: 600px;">
+      <div class="row g-0 h-100">
+
+        <!-- Left Panel (Image) -->
+        <div class="col-md-6 d-none d-md-block"
+             style="background: url('https://images.pexels.com/photos/33106043/pexels-photo-33106043.jpeg') center / cover no-repeat; 
+                    min-height: 520px; 
+                    border-top-left-radius: 0.75rem; 
+                    border-bottom-left-radius: 0.75rem;">
+        </div>
+
+        <!-- Right Panel (Form) -->
+        <div class="col-md-6 d-flex align-items-center justify-content-center bg-white p-4" 
+             style="height: 100%; border-top-right-radius: 0.75rem; border-bottom-right-radius: 0.75rem;">
+          <div class="w-100" style="max-width: 320px;">
+            <h3 class="fw-bold text-center mb-2">Welcome back!</h3>
+            <p class="text-center text-muted mb-4">Sign in to your account</p>
+
+            <form (ngSubmit)="login()" [formGroup]="loginForm" novalidate>
+
+              <!-- Email -->
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" formControlName="email"
+                  [ngClass]="{'is-invalid': loginForm.controls.email?.invalid && (loginForm.controls.email?.touched || loginForm.controls.email?.dirty)}" />
+                <div class="invalid-feedback" *ngIf="loginForm.controls.email.errors?.required">Email is required.</div>
+                <div class="invalid-feedback" *ngIf="loginForm.controls.email.errors?.email">Invalid email format.</div>
+              </div>
+
+              <!-- Password -->
+              <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" formControlName="password"
+                  [ngClass]="{'is-invalid': loginForm.controls.password?.invalid && (loginForm.controls.password?.touched || loginForm.controls.password?.dirty)}" />
+                <div class="invalid-feedback" *ngIf="loginForm.controls.password.errors?.required">Password is required.</div>
+              </div>
+
+              <!-- Login Error -->
+              <div *ngIf="loginError" class="alert alert-danger text-center" role="alert">
+                Invalid email or password
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="btn btn-primary w-100 mb-2" [disabled]="!loginForm.valid">Login</button>
+
+              <!-- Footer -->
+              <div class="text-center mt-3">
+                <small>New user? <a routerLink="/register" class="text-primary">Create an account</a></small><br>
+                <small>Forgot Password? <span style="color: blue;" (click)="forgotPasswordEnable()">Reset Password</span></small>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="forgotPassword" class="modal-overlay">
+  <div class="modal-content">
+    <h2 class="text-center mb-4">Reset Password</h2>
+    <form (ngSubmit)="resetPassword()">
+      
+      <!-- Email -->
+      <div class="mb-3">
+        <label class="form-label">Email:</label>
+        <input type="email" class="form-control" [(ngModel)]="email" name="email" required />
+      </div>
+
+      <!-- Security Question -->
+      <div class="mb-3">
+        <label class="form-label">Security Question:</label>
+        <input type="text" class="form-control" [(ngModel)]="securityAnswer" name="securityAnswer" required />
+      </div>
+
+      <!-- New Password -->
+      <div class="mb-4">
+        <label class="form-label">New Password:</label>
+        <input type="password" class="form-control" [(ngModel)]="newPassword" name="newPassword" required />
+      </div>
+
+      <!-- Buttons -->
+      <div class="d-flex justify-content-between">
+        <button type="submit" class="btn btn-primary">Reset</button>
+        <button type="button" class="btn btn-secondary" (click)="forgotPassword = false">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

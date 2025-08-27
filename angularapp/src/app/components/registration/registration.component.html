@@ -1,0 +1,159 @@
+<!-- Background Wrapper -->
+<div class="position-relative min-vh-100 w-100 overflow-hidden">
+
+  <!-- Background Image -->
+  <div class="position-absolute top-0 start-0 w-100 h-100 bg-blur"
+    style="background: url('https://images.pexels.com/photos/6137702/pexels-photo-6137702.jpeg') center / cover no-repeat; z-index: 1;">
+  </div>
+
+  <!-- Dark Overlay -->
+  <div class="position-absolute top-0 start-0 w-100 h-100" style="background-color: rgba(0, 0, 0, 0.5); z-index: 2;">
+  </div>
+
+  <!-- Register Card Container -->
+  <div class="position-relative z-3 d-flex align-items-center justify-content-center min-vh-100">
+    <div class="card shadow-lg d-flex flex-row rounded-4 overflow-hidden border-0 w-100" [class.blur]="showSuccessModal"
+      style="max-width: 900px; height: auto;">
+
+      <!-- Left Panel: Image -->
+      <div class="col-md-6 d-none d-md-block" style="background: url('https://images.pexels.com/photos/11495850/pexels-photo-11495850.jpeg') center / cover no-repeat;
+                  border-top-left-radius: 0.75rem;
+                  border-bottom-left-radius: 0.75rem;">
+      </div>
+
+      <!-- Right Panel: Form -->
+      <div class="col-md-6 bg-white p-5" style="border-top-right-radius: 0.75rem; border-bottom-right-radius: 0.75rem;">
+        <h2 class="fw-bold mb-3 text-center">Create an account</h2>
+
+        <form [formGroup]="registerForm" (ngSubmit)="registerUser()" novalidate>
+
+          <!-- Username -->
+          <div class="mb-3">
+            <label class="form-label">Username</label>
+            <input type="text" class="form-control" formControlName="username" />
+            <div
+              *ngIf="registerForm.controls.username?.invalid && (registerForm.controls.username?.touched || registerForm.controls.username?.dirty)">
+              <small class="text-danger" *ngIf="registerForm.controls.username.errors?.required">Username is
+                required.</small>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" formControlName="email" />
+            <div
+              *ngIf="registerForm.controls.email?.invalid && (registerForm.controls.email?.touched || registerForm.controls.email?.dirty)">
+              <small class="text-danger" *ngIf="registerForm.controls.email.errors?.required">Email is required.</small>
+              <small class="text-danger" *ngIf="registerForm.controls.email.errors?.email">Invalid email format.</small>
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" formControlName="password" />
+            <div
+              *ngIf="registerForm.controls.password?.invalid && (registerForm.controls.password?.touched || registerForm.controls.password?.dirty)">
+              <small class="text-danger" *ngIf="registerForm.controls.password.errors?.required">Password is
+                required.</small>
+              <small class="text-danger" *ngIf="registerForm.controls.password.errors?.pattern">Strong Password is needed.</small>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="mb-3">
+            <label class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" formControlName="confirmPassword" />
+            <div
+              *ngIf="registerForm.controls.confirmPassword?.invalid && (registerForm.controls.confirmPassword?.touched || registerForm.controls.confirmPassword?.dirty)">
+              <small class="text-danger" *ngIf="registerForm.controls.confirmPassword.errors?.required">Confirm Password
+                is required.</small>
+            </div>
+            <div
+              *ngIf="registerForm.errors?.passwordMismatch && (registerForm.controls.confirmPassword?.touched || registerForm.controls.confirmPassword?.dirty)">
+              <small class="text-danger">Passwords do not match.</small>
+            </div>
+          </div>
+
+          <!-- Mobile Number -->
+          <div class="mb-3">
+            <label class="form-label">Mobile Number</label>
+            <input type="text" class="form-control" formControlName="mobileNumber" />
+            <div
+              *ngIf="registerForm.controls.mobileNumber?.invalid && (registerForm.controls.mobileNumber?.touched || registerForm.controls.mobileNumber?.dirty)">
+              <small class="text-danger" *ngIf="registerForm.controls.mobileNumber.errors?.required">Mobile Number is
+                required.</small>
+              <small class="text-danger" *ngIf="registerForm.controls.mobileNumber.errors?.pattern">Enter a valid
+                10-digit number.</small>
+            </div>
+          </div>
+
+          <!-- Question -->
+          <div class="mb-3">
+            <label class="form-label">Recovery Question</label><br>
+            <input type="text" class="form-control" formControlName="passwordQuestion" placeholder="Enter the name of your city"/>
+            <div
+              *ngIf="registerForm.controls.passwordQuestion?.invalid && (registerForm.controls.passwordQuestion?.touched || registerForm.controls.passwordQuestion?.dirty)">
+              <small class="text-danger" *ngIf="registerForm.controls.passwordQuestion.errors?.required">Answer is
+                required.</small>
+            </div>
+          </div>
+
+          <!-- Terms & Conditions -->
+          <div class="form-check mb-3">
+            <input class="form-check-input" type="checkbox" id="terms" formControlName="termsAndCondition" />
+            <label class="form-check-label" for="terms">
+              I agree to the <a href="#" class="text-primary">Terms & Conditions</a>
+            </label>
+          </div>
+
+          <!-- Submit Button -->
+          <button class="btn btn-primary w-100 mb-3" type="submit" [disabled]="!registerForm.valid">Create
+            account</button>
+
+          <div class="text-center mt-3">
+            <small>Already have an account? <a routerLink="/login" class="text-primary">Log in</a></small>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-backdrop-custom" *ngIf="errorMessage || showSuccessModal"></div>
+
+<!-- Error Modal -->
+<div class="modal fade show d-block" tabindex="-1" *ngIf="errorMessage" style="background-color: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-danger">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Error</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="errorMessage = null"></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ errorMessage }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" (click)="errorMessage = null">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <!-- ✅ Success Modal -->
+  <div class="modal fade show d-block" tabindex="-1" *ngIf="showSuccessModal"
+    style="background-color: rgba(0, 0, 0, 0.5); z-index: 1050;">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center">
+        <div class="modal-header border-0">
+          <h5 class="modal-title w-100">Registration Successful</h5>
+        </div>
+        <div class="modal-body">
+          <p>Your account has been created successfully.</p>
+          <button class="btn btn-primary" (click)="closeModal()">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

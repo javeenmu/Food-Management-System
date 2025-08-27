@@ -1,0 +1,112 @@
+<!-- Main Content with Conditional Blur -->
+<div [class.blur-background]="showSuccessModal" class="container mt-5">
+
+  <form [formGroup]="addFoodForm" (ngSubmit)="onSubmit()" enctype="multipart/form-data" class="card shadow p-4 mx-auto" style="max-width: 600px;">
+    <h4 class="mb-4 text-primary fw-bold text-center">
+      {{ editFlag ? '✏️ Update Food Item' : '🍽️ Add New Food Item' }}
+    </h4>
+
+    <!-- Food Name -->
+    <div class="form-floating mb-3">
+      <input id="foodName" type="text" class="form-control" [(ngModel)]="food.foodName" formControlName="foodName" placeholder="Food Name" />
+      <label for="foodName">Food Name</label>
+      <div class="text-danger small mt-1" *ngIf="addFoodForm.get('foodName')?.invalid && addFoodForm.get('foodName')?.touched">
+        Food name is required.
+      </div>
+    </div>
+
+    <!-- Price -->
+    <div class="form-floating mb-3">
+      <input id="price" type="number" class="form-control" [(ngModel)]="food.price" formControlName="price" placeholder="Price" />
+      <label for="price">Price</label>
+      <div class="text-danger small mt-1" *ngIf="addFoodForm.get('price')?.invalid && addFoodForm.get('price')?.touched">
+        Enter a valid price.
+      </div>
+    </div>
+
+    <!-- Stock Quantity -->
+    <div class="form-floating mb-3">
+      <input id="stockQuantity" type="number" class="form-control" [(ngModel)]="food.stockQuantity" formControlName="stockQuantity" placeholder="Stock Quantity" />
+      <label for="stockQuantity">Stock Quantity</label>
+      <div class="text-danger small mt-1" *ngIf="addFoodForm.get('stockQuantity')?.invalid && addFoodForm.get('stockQuantity')?.touched">
+        Quantity must be a non-negative number.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label fw-semibold">Tags</label>
+      <div class="d-flex flex-wrap gap-2">
+        <button
+          *ngFor="let tag of foodTags"
+          type="button"
+          class="btn"
+          [ngClass]="{
+            'btn-success': selectedTags.includes(tag),
+            'btn-outline-secondary': !selectedTags.includes(tag)
+          }"
+          (click)="toggleTag(tag)"
+        >
+          {{ tag }}
+        </button>
+      </div>
+    </div>
+    
+
+    <!-- Image Upload -->
+    <div class="mb-3">
+      <label for="foodImage" class="form-label fw-semibold">📷 Upload Image (optional)</label>
+      <input type="file" class="form-control" id="foodImage" (change)="onImagePicked($event)" accept="image/*" />
+      <div *ngIf="imagePreview" class="mt-3 text-center">
+        <img [src]="imagePreview" alt="Preview" class="img-thumbnail rounded shadow-sm" style="max-height: 180px;" />
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="d-flex justify-content-center gap-3 mt-4">
+      <button type="submit" class="btn btn-success px-4 shadow-sm" [disabled]="addFoodForm.invalid">
+        {{ editFlag ? '💾 Update' : '➕ Add Food' }}
+      </button>
+      <button *ngIf="editFlag" type="button" class="btn btn-outline-danger px-4" (click)="cancel()">❌ Cancel</button>
+    </div>
+  </form>
+</div>
+
+<div class="modal-backdrop-custom" *ngIf="errorMessage || showSuccessModal"></div>
+
+<!-- Error Modal -->
+<div class="modal fade show d-block" tabindex="-1" *ngIf="errorMessage" style="background-color: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-danger">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Error</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="errorMessage = null"></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ errorMessage }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" (click)="errorMessage = null">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Success Modal -->
+<div class="modal-backdrop-blur" *ngIf="showSuccessModal">
+  <div class="modal d-block fade show" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content shadow border-0">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title">✅ Success</h5>
+          <button type="button" class="btn-close btn-close-white" (click)="closeModal()" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-center">
+          <p>🎉 Food item {{ editFlag ? 'updated' : 'added' }} successfully!</p>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-light" (click)="closeModal()">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

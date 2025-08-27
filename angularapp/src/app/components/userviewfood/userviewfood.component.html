@@ -1,0 +1,112 @@
+<div id="loading-spinner-overlay" *ngIf="!isLoading">
+  <div class="spinner"></div>
+</div>
+<div class="container py-4">
+  <!-- Search Panel -->
+  <div class="card shadow-sm mb-4">
+    <div class="card-body">
+      <form>
+        <div class="row g-3 align-items-end">
+          <!-- Search Field -->
+          <!-- Search Food -->
+          <div class="col-12 col-md-6 col-lg-4">
+            <label class="form-label">Search Food</label>
+            <div class="position-relative">
+              <input type="text" class="form-control rounded-pill ps-5" (input)="searchFoods()" [(ngModel)]="searchText"
+                name="searchText" placeholder="e.g. Burger, Pasta..." />
+              <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3 text-muted"
+                style="pointer-events: none;"></i>
+            </div>
+          </div>
+
+          <!-- Min Price -->
+          <div class="col-6 col-md-3 col-lg-2">
+            <label class="form-label">Min Price</label>
+            <input type="number" class="form-control rounded-pill" [(ngModel)]="minPrice" name="minPrice"
+              placeholder="₹" />
+          </div>
+
+          <!-- Max Price -->
+          <div class="col-6 col-md-3 col-lg-2">
+            <label class="form-label">Max Price</label>
+            <input type="number" class="form-control rounded-pill" [(ngModel)]="maxPrice" name="maxPrice"
+              placeholder="₹" />
+          </div>
+
+          <!-- Search Button -->
+          <div class="col-12 col-md-12 col-lg-2">
+            <button type="button" class="btn btn-primary w-100 rounded-pill" (click)="searchFoods()">
+              Search
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-12 col-md-6 col-lg-4">
+    <div class="btn-group w-100" role="group" aria-label="Food Type Toggle">
+
+      <input type="radio" class="btn-check" name="foodType" id="all" [(ngModel)]="foodType" value="All"
+        autocomplete="off" (click)="searchFoods($event)">
+      <label class="btn btn-outline-secondary" for="all">All</label>
+
+      <input type="radio" class="btn-check" name="foodType" id="veg" [(ngModel)]="foodType" value="Veg"
+        autocomplete="off" (click)="searchFoods($event)">
+      <label class="btn btn-outline-success" for="veg">Veg</label>
+
+      <input type="radio" class="btn-check" name="foodType" id="nonveg" [(ngModel)]="foodType" value="Non"
+        autocomplete="off" (click)="searchFoods($event)">
+      <label class="btn btn-outline-danger" for="nonveg">Non-Veg</label>
+    </div>
+  </div>
+<br>
+  <!-- Food Cards -->
+  <div class="row g-4" *ngIf="filteredFoods.length > 0">
+    <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let food of filteredFoods; let i = index">
+      <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden">
+        <!-- Food Image -->
+        <img [src]="food.photo" class="card-img-top" [alt]="food.foodName" style="height: 180px; object-fit: cover;" />
+
+        <!-- Card Body -->
+        <div class="card-body d-flex flex-column">
+          <h5 class="card-title fw-semibold text-dark mb-2" style="font-size: 36px; font-style: italic;">{{
+            food.foodName }}</h5>
+
+          <div class="mb-2 text-muted small">
+            <span class="d-block mb-1"> <strong class="text-dark">Price: ₹{{ food.price }}</strong></span>
+            <span *ngIf="food.stockQuantity>0">📦 In Stock: <strong>{{ food.stockQuantity }}</strong></span>
+            <span *ngIf="food.stockQuantity<=0" style="color:red">🔴 Out of Stock</span>
+          </div>
+
+          <!-- Order Button -->
+          <button [disabled]="food.stockQuantity<=0"
+            class="btn btn-outline-primary rounded-pill mt-auto w-100 fw-semibold" (click)="order(food)">
+            🛒 Order Now
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav *ngIf="totalPages > 1" class="mt-4">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 0">
+        <button class="page-link" (click)="changePage(currentPage - 1)">Previous</button>
+      </li>
+  
+      <li class="page-item" *ngFor="let page of [].constructor(totalPages); let i = index" [class.active]="i === currentPage"> 
+        <button class="page-link" (click)="changePage(i)">{{ i + 1 }}</button>
+      </li>
+  
+      <li class="page-item" [class.disabled]="currentPage === totalPages - 1">
+        <button class="page-link" (click)="changePage(currentPage + 1)">Next</button>
+      </li>
+    </ul>
+  </nav>
+  
+
+  <!-- No Foods Found -->
+  <div *ngIf="filteredFoods.length === 0 && isLoading" class="alert alert-warning text-center mt-4">
+    <strong>Foods are being cooked.</strong> Comeback Soon!🍽️
+  </div>
+</div>

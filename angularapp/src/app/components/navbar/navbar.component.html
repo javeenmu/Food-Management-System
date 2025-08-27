@@ -1,0 +1,36 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm px-3 py-2">
+  <div class="container">
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold text-light fs-4" routerLink="/">
+      My<span class="text-info">App</span>
+    </a>
+
+    <!-- Hamburger Toggle -->
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#guestNavbar"
+      aria-controls="guestNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Nav Links -->
+    <div class="collapse navbar-collapse justify-content-end" id="guestNavbar">
+      <ul class="navbar-nav align-items-center mb-2 mb-lg-0 gap-3">
+        <li class="nav-item">
+          <a routerLink="/"
+             routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }"
+             class="nav-link fw-medium text-light">Home</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/register"
+             routerLinkActive="active"
+             class="nav-link fw-medium text-light">Register</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/login"
+             routerLinkActive="active"
+             class="nav-link fw-medium text-light">Login</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

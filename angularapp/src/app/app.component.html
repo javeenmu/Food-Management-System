@@ -1,0 +1,5 @@
+<app-navbar *ngIf="!role"></app-navbar>
+<app-usernav *ngIf="role === 'USER'"></app-usernav>
+<app-adminnav *ngIf="role === 'ADMIN'"></app-adminnav>
+
+<router-outlet></router-outlet>

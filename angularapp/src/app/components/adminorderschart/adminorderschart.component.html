@@ -1,0 +1,104 @@
+
+<header class="dashboard-header d-flex justify-content-between align-items-center px-4 py-3">
+  <h2 class="fw-bold">📊 Admin Orders Dashboard</h2>
+</header>
+
+<!-- Status Overview -->
+<section class="status-section px-4 py-3">
+  <div class="row g-3">
+    <div class="col-md-2" *ngFor="let status of statusSummary">
+      <div class="status-card shadow-sm text-center">
+        <div class="status-icon mb-2">
+          <i [ngClass]="status.icon" class="fs-3"></i>
+        </div>
+        <div class="status-label">{{ status.label }}</div>
+        <div class="status-count fw-bold" [ngClass]="status.color">{{ status.count }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Most Ordered Foods -->
+
+<section class="food-orders-section px-4 py-3">
+  <h4 class="mb-3">🍽️ Most Ordered Foods</h4>
+  <div class="row g-3">
+    <div class="col-md-4" *ngFor="let item of foodOrders">
+      <div class="food-card shadow-sm p-3 d-flex justify-content-between align-items-center"
+        (click)="openFoodOrders(item.name)">
+        <div>
+          <h6 class="mb-1">{{ item.name }}</h6>
+          <small class="text-muted">Delivered Orders</small>
+        </div>
+        <span class="badge bg-primary rounded-pill">{{ item.count }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- 📊 Bar Chart -->
+<section class="px-4 py-3">
+  <h4 class="mb-3">📦 Order Status Chart</h4>
+  <div class="card shadow-sm p-3 mb-4">
+    <div style="position: relative; height: 350px;">
+      <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+        [chartType]="barChartType" [legend]="true">
+      </canvas>
+    </div>
+  </div>
+
+</section>
+
+<!-- 📈 Line Chart -->
+<section class="px-4 py-3">
+  <h4 class="mb-3">💰 Revenue Trend</h4>
+  <div class="card shadow-sm p-3">
+    <div style="position: relative; height: 350px;">
+      <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions"
+        [chartType]="lineChartType" [legend]="true">
+      </canvas>
+    </div>
+  </div>
+</section>
+
+<!-- Modal -->
+<div class="modal fade show d-block custom-modal" *ngIf="showModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content shadow-lg rounded-4 border-0 overflow-hidden">
+      <div class="modal-header bg-gradient-primary text-black d-flex justify-content-between align-items-center">
+        <h5 class="modal-title fw-semibold">
+          <i class="bi bi-clipboard-data me-2"></i> Orders for {{ selectedFood }}
+        </h5>
+        <button type="button" class="btn-close btn-close-white" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+
+      <div class="modal-body bg-light-subtle">
+        <div *ngIf="selectedOrders.length === 0" class="text-muted text-center py-3">
+          No delivered orders found for this item.
+        </div>
+
+        <ul class="list-group">
+          <li *ngFor="let order of selectedOrders"
+            class="list-group-item d-flex justify-content-between align-items-center bg-white border-0 border-bottom">
+            <div>
+              <div class="fw-semibold">Order #{{ order.orderId }}</div>
+              <div class="small text-muted">
+                👤 {{ order.user.username }}<br>
+                📦 Quantity: {{ order.quantity }}
+              </div>
+            </div>
+            <span class="badge bg-success rounded-pill fs-6">₹{{ order.totalAmount }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="modal-footer bg-white border-0">
+        <button class="btn btn-outline-secondary" (click)="closeModal()">
+          <i class="bi bi-x-circle me-1"></i> Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>

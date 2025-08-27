@@ -1,0 +1,50 @@
+<!-- ADMIN NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm px-3 py-2">
+  <div class="container">
+    <!-- Brand -->
+    <a class="navbar-brand fw-bold text-light fs-4" routerLink="/home">
+      Admin<span class="text-info">Panel</span>
+    </a>
+
+    <!-- Hamburger Toggle -->
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#adminNavbar"
+      aria-controls="adminNavbar" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse justify-content-end" id="adminNavbar">
+      <ul class="navbar-nav align-items-center mb-2 mb-lg-0 gap-3">
+        <li class="nav-item">
+          <a routerLink="/home" routerLinkActive="active" class="nav-link fw-medium text-light">Home</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/adminaddfood" routerLinkActive="active" class="nav-link fw-medium text-light">Add Food</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/adminviewfood" routerLinkActive="active" class="nav-link fw-medium text-light">View Food</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/adminvieworders" routerLinkActive="active" class="nav-link fw-medium text-light">Order Details</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/adminviewfeedback" routerLinkActive="active" class="nav-link fw-medium text-light">Feedbacks</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/adminorderschart" routerLinkActive="active" class="nav-link fw-medium text-light">Order Chart</a>
+        </li>
+
+        <!-- Username as clickable link -->
+        <li class="nav-item">
+          <a routerLink="/profile" routerLinkActive="active" class="nav-link fw-bold text-info">
+            {{ username }}
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <button class="btn btn-danger ms-lg-3" (click)="logout()">Logout</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,87 @@
+<!-- Feedback Form -->
+<div [class.blurred]="errorMessage || successMessage">
+  <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" class="p-4 rounded shadow bg-light">
+    <h2 class="mb-4 text-center text-primary">Add Feedback</h2>
+
+    <!-- Food Selection -->
+    <div class="mb-3">
+      <label for="food" class="form-label">Food Item</label>
+      <input type="text" class="form-control" [(ngModel)]="foodName" [ngModelOptions]="{standalone: true}" readonly>
+    </div>
+
+    <!-- Feedback Text -->
+    <div class="mb-3">
+      <label for="feedback" class="form-label">Feedback*</label>
+      <textarea id="feedback" formControlName="feedback" rows="4" class="form-control"></textarea>
+      <div *ngIf="submitted && feedbackForm.controls['feedback'].errors?.required" class="text-danger mt-1">
+        *Feedback is required
+      </div>
+      <div *ngIf="submitted && feedbackForm.controls['feedback'].errors?.maxlength" class="text-danger mt-1">
+        *Feedback must be less than 400 characters
+      </div>
+
+    </div>
+
+    <!-- Star Rating -->
+    <div class="mb-3">
+      <label class="form-label">Rating*</label>
+      <div class="d-flex align-items-center">
+        <ng-container *ngFor="let star of [1,2,3,4,5]">
+          <i class="bi" [ngClass]="{
+          'bi-star-fill text-warning': star <= feedbackForm.controls['rating'].value,
+          'bi-star text-secondary': star > feedbackForm.controls['rating'].value
+        }" (click)="setRating(star)" style="font-size: 1.3rem; cursor: pointer; margin-right: 5px;"></i>
+        </ng-container>
+      </div>
+      <div *ngIf="submitted && feedbackForm.controls['rating'].invalid" class="text-danger mt-1">
+        *Please select a rating
+      </div>
+    </div>
+
+    <!-- Submit Button -->
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary px-4">Submit</button>
+    </div>
+  </form>
+</div>
+
+<!-- Optional Backdrop for Blur Effect -->
+<div class="modal-backdrop-custom" *ngIf="errorMessage || successMessage"></div>
+
+<!-- Error Modal -->
+<div class="modal fade show d-block" tabindex="-1" *ngIf="errorMessage" style="background-color: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-danger">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title">Error</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="errorMessage = null"></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ errorMessage }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-danger" (click)="errorMessage = null">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Success Modal -->
+<div class="modal fade show d-block" tabindex="-1" *ngIf="successMessage" style="background-color: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content border-success">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title">Success</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="successMessage = null"
+          routerLink="/userviewfeedback"></button>
+      </div>
+      <div class="modal-body">
+        <p>{{ successMessage }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-success" (click)="successMessage = null"
+          routerLink="/userviewfeedback">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

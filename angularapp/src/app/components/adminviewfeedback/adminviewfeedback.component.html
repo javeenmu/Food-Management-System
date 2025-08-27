@@ -1,0 +1,42 @@
+<!-- No Feedback -->
+<div id="loading-spinner-overlay" *ngIf="!isLoading">
+  <div class="spinner"></div>
+</div>
+<div *ngIf="feedbacks.length === 0 && isLoading" class="d-flex flex-column align-items-center justify-content-center my-5 text-muted">
+  <i class="bi bi-emoji-frown fs-1"></i>
+  <p class="fs-5 mt-2">No feedbacks found at the moment.</p>
+</div>
+
+<!-- Feedback Table -->
+<div *ngIf="feedbacks.length > 0" class="container-fluid px-5 mt-5">
+  <h2 class="text-center fw-bold mb-4">What Our Users Are Saying</h2>
+
+  <div class="table-responsive">
+    <table class="table table-hover align-middle table-borderless shadow-sm bg-white rounded overflow-hidden">
+      <thead class="table-light text-center text-secondary border-bottom">
+        <tr class="align-middle">
+          <th>Feedback ID</th>
+          <th>User</th>
+          <th>Food</th>
+          <th>Rating</th>
+          <th>Comment</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody class="text-center">
+        <tr *ngFor="let feedback of feedbacks" class="hover-row">
+          <td class="text-muted">#{{ feedback.feedbackId }}</td>
+          <td class="fw-semibold text-dark">{{ feedback.user.username }}</td>
+          <td class="text-primary">{{ feedback.food.foodName }}</td>
+          <td>
+            <ng-container *ngFor="let star of getStars(feedback.rating)">
+              <i class="bi" [ngClass]="star.filled ? 'bi-star-fill text-warning' : 'bi-star text-muted'"></i>
+            </ng-container>
+          </td>
+          <td class="text-muted fst-italic">{{ feedback.feedbackText }}</td>
+          <td>{{ feedback.date | date: 'mediumDate' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
